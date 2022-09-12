@@ -18,7 +18,7 @@ transactions_message = []
 
 def transactions(obj, n):
 	obj = json.loads(obj)
-	if current - int(obj[n]['timeEpochMilli']) < 86400000: #remove a 0 to make it 10days to 1 day
+	if current - int(obj[n]['timeEpochMilli']) < 86400000: 
 		transaction = obj[n].get('transaction')
 		ir_change = obj[n].get('reserveChange')
 		if transaction: 
@@ -31,7 +31,7 @@ def transactions(obj, n):
 				other = obj[n].get('tradeBlock')
 				trade_block(other) 
 			else:
-				transactions_message ((other['description'])) # commish change
+				transactions_message ((other['description'])) 
 	return (transactions_message)
 
 def add_remove_trade(obj):
