@@ -1,4 +1,4 @@
-import os, discord, asyncio, requests, json, time, datetime
+import os, discord, requests, json, time, datetime
 from datetime import datetime
 from discord.ext import commands, tasks
 
