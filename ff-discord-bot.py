@@ -11,8 +11,9 @@ channel_id = CHANNEL ID HERE
 response = (requests.get('https://www.fleaflicker.com/api/FetchLeagueActivity', params=league_id)).json()['items']
 data = json.dumps(response, sort_keys = True, indent = 4)
 
-
-client = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
+client = discord.Client(intents = intents)
 trade_ids = []
 transactions_message = []
 
