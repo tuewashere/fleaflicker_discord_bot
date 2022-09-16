@@ -22,9 +22,7 @@ roster_message = []
 def team_owners():
 	for x in range (10):
 		league_id = {"league_id": 215756,}
-		team_ids= {'1396957': 'Tue', '1434434': 'Lucas', '1434601': 'Kurtis', 
-		'1435523': 'Phi', '1436373': 'Joaquin', '1440304': 'Alex', '1442373': 'Dev', 
-		'1442458': 'Byip','1445713':'Fukuda', '1447460': 'Paul' }
+		team_ids= {#DICTIONARY OF LEAGUE IDs AND NAMES HERE}
 		ids = (requests.get('https://www.fleaflicker.com/api/FetchLeagueRosters', params=league_id)).json()['rosters'][x]['team']['id']
 		id_data = json.dumps(ids, sort_keys = True, indent = 4)
 		names = (requests.get('https://www.fleaflicker.com/api/FetchLeagueRosters', params=league_id)).json()['rosters'][x]['team']['name']
