@@ -8,9 +8,9 @@ current = int(time.time() * 1000)
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
-league_id = {"league_id": 215756,}
-DISCORD_TOKEN = 'MTAxNzE1NDkwNzQ5NDY5MDg3Nw.GzOiMD.nIfyCb_r7qjG6FBHhlwLKBY6hCJfEHxmeCzAc0'
-channel_id = 1015689875237916702
+league_id = {"league_id": #LEAGUE ID HERE,}
+DISCORD_TOKEN = #DISCORD TOKEN HERE
+channel_id = # CHANNEL ID HERE
 client = discord.Client(intents = intents)
 response = (requests.get('https://www.fleaflicker.com/api/FetchLeagueActivity', params=league_id)).json()['items']
 data = json.dumps(response, sort_keys = True, indent = 4)
