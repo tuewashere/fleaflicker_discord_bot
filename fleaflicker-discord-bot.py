@@ -88,8 +88,6 @@ def reserve_change(obj):
 	else:
 		transactions_message.append(owner_info['name'] + ' added ' + info['proPlayer']['nameFull'] + ' to IR')
 
-team_owners()
-
 @bot.event
 async def on_ready():
 	print ('logged in')
