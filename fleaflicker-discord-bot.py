@@ -105,8 +105,6 @@ async def on_ready():
 
 @tasks.loop(hours=24)
 async def msg1():
-	for x in range(30):
-		transactions(data, x)
 	channel = bot.get_channel(channel_id)
 	if (len(transactions_message)) > 0:
 		await channel.send('**Transactions in the last 24 hours**')
@@ -122,9 +120,17 @@ async def msg1():
 async def before_msg1():
 	for x in range(60*60*24):
 		if dt.datetime.now().hour == 8:
+			for x in range(30):
+				transactions(data, x)
 			print ('its time')
 			return
 		await asyncio.sleep(1)
+
+@bot.command(name='teams') #
+async def SendMessage(msg):
+	team_owners()
+	await msg.send('\n'.join(roster_message))
+	roster_message.clear()
 
 bot.run(DISCORD_TOKEN)
 
