@@ -3,25 +3,23 @@ import datetime as dt
 from datetime import datetime
 from discord.ext import commands, tasks
 
-
-current = int(time.time() * 1000)
-
-intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='!', intents=intents)
 league_id = {"league_id": #LEAGUE ID HERE,}
 DISCORD_TOKEN = #DISCORD TOKEN HERE
 channel_id = # CHANNEL ID HERE
+team_ids= {#LEAGUE_ID1: 'NAME OF OWNER', LEAGUE_ID2: 'NAME OF OWNER', ... }
+
+current = int(time.time() * 1000)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix='!', intents=intents)
 client = discord.Client(intents = intents)
 response = (requests.get('https://www.fleaflicker.com/api/FetchLeagueActivity', params=league_id)).json()['items']
 data = json.dumps(response, sort_keys = True, indent = 4)
-
 trade_ids = []
 transactions_message = []
 roster_message = []
 
 def team_owners():
 	for x in range (10):
-		team_ids= {#LEAGUE_ID1: 'NAME OF OWNER', LEAGUE_ID2: 'NAME OF OWNER', ... }
 		ids = (requests.get('https://www.fleaflicker.com/api/FetchLeagueRosters', params=league_id)).json()['rosters'][x]['team']['id']
 		id_data = json.dumps(ids, sort_keys = True, indent = 4)
 		names = (requests.get('https://www.fleaflicker.com/api/FetchLeagueRosters', params=league_id)).json()['rosters'][x]['team']['name']
