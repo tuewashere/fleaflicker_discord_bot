@@ -26,11 +26,7 @@ def team_owners():
 		names_data = json.dumps(names, sort_keys = True, indent = 4)
 		if id_data in team_ids.keys():
 			roster_message.append(names_data + ' is ' + team_ids[id_data])
-	print (roster_message)
-	roster_message.clear()
 	
-	
-
 def transactions(obj, n):
 	obj = json.loads(obj)
 	if current - int(obj[n]['timeEpochMilli']) < 86400000: #remove a 0 to make it 10days to 1 day
@@ -47,8 +43,6 @@ def transactions(obj, n):
 				trade_block(other) 
 			else:
 				transactions_message.append((other['description'])) # commish change
-	return (transactions_message)
-	print ('team rosters')
 
 def add_remove_trade(obj):
 	trade = obj.get('tradeId')
