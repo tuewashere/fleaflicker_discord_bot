@@ -62,8 +62,8 @@ def update_pwr():
 		yaml.dump(HL_yml, f)
 
 def create_pwr():
-#	update_high_low()
-#	update_pwr()
+	update_high_low()
+	update_pwr()
 	with open (yaml_path, 'r') as f:
 		ranking = {}
 		RankList = list()
