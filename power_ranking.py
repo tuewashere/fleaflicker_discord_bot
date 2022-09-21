@@ -1,8 +1,6 @@
 import requests, json, yaml
 
 league_id = {"league_id": #LEAGUE ID HERE}
-week = int (input('what week is it?'))
-total_games = (week - 1)
 yaml_path = 'high_low.yaml'
 
 def update_yaml(team_id, score):
@@ -64,8 +62,8 @@ def update_pwr():
 		yaml.dump(HL_yml, f)
 
 def create_pwr():
-	update_high_low()
-	update_pwr()
+#	update_high_low()
+#	update_pwr()
 	with open (yaml_path, 'r') as f:
 		ranking = {}
 		RankList = list()
@@ -79,8 +77,12 @@ def create_pwr():
 			RankList.append(ranking[x][1])
 		return ('\n'.join(RankList))
 
-
-msg = create_pwr()
-print ('Week ' + str(week) + ' power rankings:')
-print (msg)
+with open (yaml_path, 'r') as f: 
+	HL_yml = yaml.safe_load(f)
+	week =  HL_yml['week']
+	total_games = week - 1
+	msg = create_pwr()
+	print ('Week ' + str(week) + ' power rankings:')
+	print (msg)
+	
 
