@@ -1,6 +1,6 @@
 import requests, json, yaml
 
-league_id = {"league_id": #LEAGUE ID HERE}
+league_id = {"league_id": LEAGUE ID HERE}
 yaml_path = 'high_low.yaml'
 
 def update_yaml(team_id, score):
@@ -25,7 +25,7 @@ def update_yaml(team_id, score):
 
 def update_high_low():
 	for x in range(5):
-		params = {"league_id": 215756, 'scoring_period': total_games}
+		params = {"league_id": LEAGUE ID HERE, 'scoring_period': total_games}
 		away_score = requests.get('https://www.fleaflicker.com/api/FetchLeagueScoreboard', params=params).json()['games'][x]['awayScore']['score']['value']
 		away_id = requests.get('https://www.fleaflicker.com/api/FetchLeagueScoreboard', params=params).json()['games'][x]['away']['id']
 		home_score = requests.get('https://www.fleaflicker.com/api/FetchLeagueScoreboard', params=params).json()['games'][x]['homeScore']['score']['value']
@@ -58,6 +58,9 @@ def update_pwr():
 			if len(pwr_list) < 10:
 				pwr_list.append(x)
 		HL_yml['teams'] = pwr_list
+		week_num = HL_yml['week']
+		week_num +=1
+		HL_yml['week'] = week_num
 	with open(yaml_path, 'w') as f:
 		yaml.dump(HL_yml, f)
 
@@ -76,13 +79,14 @@ def create_pwr():
 		for x in range(10):
 			RankList.append(ranking[x][1])
 		return ('\n'.join(RankList))
+	with open (yaml_path, 'r') as f: 
+		yaml.dump(HL_yml, f)
+
 
 with open (yaml_path, 'r') as f: 
 	HL_yml = yaml.safe_load(f)
-	week =  HL_yml['week']
-	total_games = week - 1
+	total_games =  HL_yml['week']
+	week = total_games +1
 	msg = create_pwr()
 	print ('Week ' + str(week) + ' power rankings:')
 	print (msg)
-	
-
