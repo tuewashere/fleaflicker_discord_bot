@@ -1,4 +1,4 @@
-import os, discord, requests, json, time, datetime, asyncio
+import os, requests, json
 
 roster_message = []
 def team_owners():
